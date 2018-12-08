@@ -11,6 +11,7 @@ public class TreeholeJekyllApplicationTests {
 
     @Test
     public void contextLoads() {
+        System.out.println("hello soring runner");
     }
 
 }
