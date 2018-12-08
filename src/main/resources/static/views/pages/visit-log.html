@@ -1,0 +1,114 @@
+<div class="animated fadeIn" id="visit-log">
+  <!-- Breadcrumb-->
+  <ol class="breadcrumb p-0 mb-4">
+    <h2 class="m-0 text-dark">访问日志</h2>
+    <!-- Breadcrumb Menu-->
+    <li class="breadcrumb-menu d-md-down-none">
+      <ul class="d-flex list-unstyled">
+        <li class="breadcrumb-item"><i class="fa fa-home"></i></li>
+        <li class="breadcrumb-item active">
+          <a>访问统计</a>
+        </li>
+        <li class="breadcrumb-item active">
+          <a>访问日志</a>
+        </li>
+      </ul>
+    </li>
+  </ol>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="form-group row">
+        <div class="col-md-12">
+          <div class="form-group row">
+            <div class="col-md-6">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    访问时间段
+                  </span>
+                </div>
+                <input type="text" placeholder="请输入时间段" id="reservation" class="form-control" v-model="query.dates" />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    入口页面
+                  </span>
+                </div>
+                <input type="text" placeholder="请输入入口页面" class="form-control" v-model="query.page" />
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-6">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    IP
+                  </span>
+                </div>
+                <input type="text" class="form-control" placeholder="IP地址" v-model="query.sourceIp">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    设备
+                  </span>
+                </div>
+                <input type="text" class="form-control" placeholder="设备信息" v-model="query.action" >
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-md-12">
+              <button type="reset" class="btn btn-sm btn-primary" @click="search" >
+                <i class="fa icon-magnifier"></i> 查询
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-12">
+      <table class="table table-responsive-sm">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>访问时间</th>
+            <th>地域</th>
+            <th>来源</th>
+            <th>设备</th>
+            <th>入口页面</th>
+            <th>IP</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="line in data" >
+            <td v-text="line.id" ></td>
+            <td v-text="line.datetime"></td>
+            <td v-text="line.area"></td>
+            <td v-text="line.source"></td>
+            <td v-text="line.device"></td>
+            <td v-text="line.page"></td>
+            <td v-text="line.ip"></td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- /.card -->
+    </div>
+    <div>
+      <Pagination :pageinfo="page" @change="pageChange" ></Pagination>
+    </div>
+    <!-- /.col-lg-6 -->
+    <!-- /.col-lg-6 -->
+  </div>
+  <!--/.row-->
+</div>
+
+<script type="text/javascript" src="js/treehole/treehole-settings-visit-log.js"></script>

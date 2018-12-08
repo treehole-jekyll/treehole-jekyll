@@ -1,0 +1,66 @@
+<script src="js/treehole/treehole-comment-manage.js"></script>
+
+<div class="animated fadeIn" id="treehole-comment-manage">
+  <!-- Breadcrumb-->
+  <ol class="breadcrumb p-0 mb-4">
+    <h2 class="m-0 text-dark">评论管理</h2>
+    <!-- Breadcrumb Menu-->
+    <li class="breadcrumb-menu d-md-down-none">
+      <ul class="d-flex list-unstyled">
+        <li class="breadcrumb-item"><i class="fa fa-home"></i></li>
+        <li class="breadcrumb-item active">
+          <a>评论管理</a>
+        </li>
+      </ul>
+    </li>
+  </ol>
+  <!-- /.Breadcrumb -->
+  <!--/.row-->
+
+  <div class="row">
+    <div class="col-lg-12">
+      <!-- Simple Table -->
+      <div class="card">
+        <div class="card-body">
+          <table class="table table-responsive-sm">
+            <thead>
+              <tr>
+                <th>文章标题</th>
+                <th>评论内容</th>
+                <th>评论人</th>
+                <th>评论时间</th>
+                <th>状态</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="line in data" >
+                <td v-text="line.title" ></td>
+                <td v-text="line.content"></td>
+                <td>
+                  <span class="badge badge-secondary">小甜甜</span>
+                </td>
+                <td>
+                  2018年9月20日 13:00:00
+                </td>
+                <td>
+                  <span class="badge badge-warning text-white">通过</span>
+                </td>
+                <td>
+                  <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
+                    <button type="button" class="btn btn-success text-white" disabled>通过</button>
+                    <button type="button" class="btn btn-warning text-white">黑名单</button>
+                    <button type="button" class="btn btn-danger text-white">删除</button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <Pagination :pageinfo="page" @change="pageChange" ></Pagination>
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+  </div>
+  <!--/.row-->
+</div>

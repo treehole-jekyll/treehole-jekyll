@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="author" content="张英伟">
+  <meta name="keyword" content="treehole zhangyignwei.com 张英伟 blog admin TreeHole THole 个人博客">
+
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <!-- Icons -->
+  <link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="vendors/simple-line-icons/css/simple-line-icons.css">
+  <!-- <link rel="stylesheet" type="text/css" media="all" href="css/daterangepicker-bs3.css" /> -->
+  <link href="http://cdn.bootcss.com/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" rel="stylesheet">
+  <!-- Style -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/taginput/treehole-style.css">
+
+  <!-- REQUIRED SCRIPTS -->
+  <script src="js/src/clipboard.min.js"></script>
+  <script src="vendors/jquery/js/jquery.min.js"></script>
+  <script src="vendors/popper.js/js/popper.min.js"></script>
+  <script src="vendors/bootstrap/js/bootstrap.min.js"></script>
+  <script src="vendors/pace-progress/js/pace.min.js"></script>
+  <script src="vendors/perfect-scrollbar/js/perfect-scrollbar.min.js"></script>
+  <script src="vendors/@racikui/racikui-bootstrap/js/racikui.min.js"></script>
+  <script type="text/javascript" src="js/moment.min.js"></script>
+  <!-- <script type="text/javascript" src="js/daterangepicker.js"></script> -->
+  <script src="js/laydate/laydate.js"></script>
+  <script src="http://cdn.bootcss.com/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>
+  <script src="http://cdn.bootcss.com/typeahead.js/0.11.1/typeahead.bundle.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+  <script src="js/treehole/treehole-global.js"></script>
+
+  <title>TreeHole 管理端</title>
+</head>
+
+<body class="o-app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show ui-indigo">
+  <!-- Header -->
+  <header class="o-header navbar">
+    <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" data-toggle="sidebar-show">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand text-brand" href="#">
+      <div class="navbar-brand-full">
+        <h3 class="m-0">TreeHole</h3>
+      </div>
+      <div class="navbar-brand-minimized">
+        <h3 class="m-0">THole</h3>
+      </div>
+    </a>
+    <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Nav Left -->
+    <!-- 这里是上边的菜单 -->
+    <!-- <ul class="nav navbar-nav d-md-down-none">
+      <li class="nav-item px-3">
+        <a class="nav-link" href="#">Home</a>
+      </li>
+      <li class="nav-item px-3">
+        <a class="nav-link" href="#">Settings</a>
+      </li>
+    </ul> -->
+
+    <!-- Nav right -->
+    <ul class="nav navbar-nav ml-auto">
+      <!-- Notifications Dropdown Menu -->
+      <li class="nav-item dropdown d-md-down-none">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="icon-bell"></i>
+          <span class="badge badge-pill badge-danger">5</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <span class="dropdown-header text-center">5 Notifications</span>
+          <a href="#" class="dropdown-item">
+            <i class="fa fa-envelope mr-2"></i> 5 new messages
+            <span class="float-right text-muted text-sm">2 mins</span>
+          </a>
+          <a href="#" class="dropdown-item">
+            <i class="fa fa-file mr-2"></i> 2 new reports
+            <span class="float-right text-muted text-sm">2 days</span>
+          </a>
+          <a href="#" class="dropdown-item dropdown-footer text-center">See All Notifications</a>
+        </div>
+      </li>
+      <!-- User Dropdown -->
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+          <img class="img-avatar" src="img/avatars/default-150x150.png" alt="admin@racikproject.com">
+        </a>
+        <div class="dropdown-menu dropdown-menu-right">
+          <div class="dropdown-header text-center">
+            <strong>欢迎你： <span>Admin</span></strong>
+          </div>
+          <a class="dropdown-item" href="#">
+            <i class="fa fa-bell-o"></i> Updates
+            <span class="badge badge-info">42</span>
+          </a>
+          <a class="dropdown-item" href="#">
+            <i class="fa fa-tasks"></i> Tasks
+            <span class="badge badge-danger">42</span>
+          </a>
+          <div class="dropdown-header text-center">
+            <strong>Settings</strong>
+          </div>
+          <a class="dropdown-item" href="#">
+            <i class="fa fa-user"></i> Profile
+          </a>
+          <div class="divider"></div>
+          <a class="dropdown-item" href="#">
+            <i class="fa fa-shield"></i> Lock Account</a>
+          <a class="dropdown-item" href="#">
+            <i class="fa fa-lock"></i> Logout
+          </a>
+        </div>
+      </li>
+    </ul>
+
+    <button class="navbar-toggler aside-menu-toggler d-md-down-none" type="button" data-toggle="aside-menu-lg-show">
+      <i class="fa fa-th-large"></i>
+    </button>
+    <button class="navbar-toggler aside-menu-toggler d-lg-none" type="button" data-toggle="aside-menu-show">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </header>
+  <!-- /.header -->
+
+  <!-- Body Container -->
+  <div class="o-body">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <!-- Sidebar Menu -->
+      <nav class="sidebar-nav">
+        <ul class="nav">
+          <!-- Dashboard -->
+          <li class="nav-item">
+            <a class="nav-link" href="dashboard.html">
+              <i class="nav-icon icon-speedometer"></i> 首页
+              <!-- <span class="badge badge-success">NEW</span> -->
+            </a>
+          </li>
+          <li class="nav-title">文章管理</li>
+          <li class="nav-item">
+            <a class="nav-link" href="pages/article-create.html">
+              <i class="nav-icon icon-plus"></i> 新建发布 </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="pages/article-manage.html">
+              <i class="nav-icon icon-docs"></i> 文章管理 </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="pages/kind-manage.html">
+              <i class="nav-icon icon-list"></i> 分类管理 </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="pages/comment-manage.html">
+              <i class="nav-icon fa fa-commenting-o"></i> 评论管理 </a>
+          </li>
+          <li class="nav-title">系统管理</li>
+          <li class="nav-item">
+            <a class="nav-link" href="pages/settings-basic.html">
+              <i class="nav-icon fa fa-id-card-o"></i> 基础信息 </a>
+          </li>
+          <li class="nav-item nav-dropdown">
+            <a class="nav-link nav-dropdown-toggle" href="#">
+              <i class="nav-icon fa fa-area-chart"></i>访问统计</a>
+            <ul class="nav-dropdown-items">
+              <li class="nav-item">
+                <a class="nav-link" href="pages/visit-from.html">
+                  <i class="nav-icon fa fa-circle-o"></i>来源统计</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="pages/visit-be.html">
+                  <i class="nav-icon fa fa-circle-o"></i>受访统计</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="pages/visit-log.html">
+                  <i class="nav-icon fa fa-circle-o"></i>访问日志</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="pages/system-log.html">
+              <i class="nav-icon icon-settings"></i> 系统日志 </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="pages/settings-system.html">
+              <i class="nav-icon icon-settings"></i> 系统设置 </a>
+          </li>
+          <li class="divider"></li>
+          <li class="nav-title">素材管理</li>
+          <li class="nav-item">
+            <a class="nav-link" href="pages/resources.html">
+              <i class="nav-icon icon-doc"></i> 素材管理 </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.Sidebar Menu -->
+
+      <button class="sidebar-minimizer brand-minimizer" type="button"></button>
+    </aside>
+    <!-- /.Sidebar -->
+
+    <!-- Main Content -->
+    <main class="main">
+      <!-- Content -->
+      <div class="container-fluid">
+        <div id="loadview"></div>
+      </div>
+      <!-- /.Content -->
+    </main>
+    <!-- /.Main Content -->
+
+    <!-- Aside Menu -->
+    <aside class="aside-menu">
+      aside1
+    </aside>
+    <!-- /.Aside Menu -->
+  </div>
+  <!-- /.Body Container -->
+
+  <!-- Footer -->
+  <footer class="o-footer">
+    <div>
+      <strong><a href="#">TreeHole</a></strong>
+      <span>&copy; 2018 zhangyingwei.</span>
+    </div>
+
+    <div class="ml-auto">
+      <strong>Version</strong> 0.0.1
+    </div>
+  </footer>
+  <!-- /.Footer -->
+  <script>
+    $('#loadview').ajaxLoad();
+    $(document).ajaxComplete(function () {
+      Pace.restart()
+    });
+
+  </script>
+</body>
+
+</html>

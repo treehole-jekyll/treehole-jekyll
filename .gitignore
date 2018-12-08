@@ -1,0 +1,17 @@
+/target/
+!.mvn/wrapper/maven-wrapper.jar
+
+### STS ###
+.classpath
+.settings
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### maven ####
+mvnw
+mvnw.cmd
+.mvn

@@ -1,0 +1,175 @@
+<!-- Plugins and scripts required by this view-->
+<script src="/vendors/chart.js/js/Chart.min.js"></script>
+<script src="/js/treehole-main.js"></script>
+
+<div class="animated fadeIn" id="treehole-dashboard">
+  <!-- Breadcrumb-->
+  <ol class="breadcrumb p-0 mb-4">
+    <h2 class="m-0 text-dark">首页</h2>
+    <!-- Breadcrumb Menu-->
+    <li class="breadcrumb-menu d-md-down-none">
+      <ul class="d-flex list-unstyled">
+        <li class="breadcrumb-item"><i class="fa fa-home"></i></li>
+        <li class="breadcrumb-item active">
+          <a>首页</a>
+        </li>
+      </ul>
+    </li>
+  </ol>
+  <!-- /.Breadcrumb -->
+
+  <div class="row">
+    <div class="col-sm-6 col-lg-3">
+      <div class="card text-white bg-primary">
+        <div class="card-body pb-0">
+          <div class="text-value" v-text="countData.articleCount.count" ></div>
+          <div>文章总数</div>
+        </div>
+        <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
+          <canvas id="main-article-count" class="chart" height="70"></canvas>
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+    <div class="col-sm-6 col-lg-3">
+      <div class="card text-white bg-success">
+        <div class="card-body pb-0">
+          <div class="text-value" v-text="countData.commontCount.count"></div>
+          <div>评论总数</div>
+        </div>
+        <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
+          <div class="brand-card-body">
+            <div>
+              <div class="text-value" v-text="countData.commontCount.newAddCount"></div>
+              <div class="text-uppercase text-muted small">昨日新增</div>
+            </div>
+            <div>
+              <div class="text-value" v-text="countData.commontCount.peopleCount" ></div>
+              <div class="text-uppercase text-muted small">评论人数</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+    <div class="col-sm-6 col-lg-3">
+      <div class="card text-white bg-warning">
+        <div class="card-body pb-0">
+          <div class="text-value" v-text="countData.resourcesCount.count" ></div>
+          <div>素材总数</div>
+        </div>
+        <div class="chart-wrapper mt-3" style="height:70px;">
+          <canvas id="main-resource-type" class="chart" height="70"></canvas>
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+    <div class="col-sm-6 col-lg-3">
+      <div class="card text-white bg-danger">
+        <div class="card-body pb-0">
+          <div class="text-value" v-text="countData.visitCount.count" ></div>
+          <div>访问统计</div>
+        </div>
+        <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
+          <canvas id="main-visit-chart" class="chart" height="70"></canvas>
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+  </div>
+  <!--/.row-->
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          一周数据
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="callout callout-info">
+                    <small class="text-muted">一周 PV 统计</small>
+                    <br>
+                    <strong class="h4" v-text="weekCount.pvCount" ></strong>
+                  </div>
+                </div>
+                <!--/.col-->
+                <div class="col-sm-6">
+                  <div class="callout callout-danger">
+                    <small class="text-muted">一周 UV 统计</small>
+                    <br>
+                    <strong class="h4" v-text="weekCount.uvCount" ></strong>
+                  </div>
+                </div>
+                <!--/.col-->
+              </div>
+            </div>
+            <!--/.col-->
+            <div class="col-sm-6">
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="callout callout-warning">
+                    <small class="text-muted">一周 IP 数</small>
+                    <br>
+                    <strong class="h4" v-text="weekCount.ipCount"></strong>
+                    <div class="chart-wrapper">
+                      <canvas id="sparkline-chart-3" width="100" height="30"></canvas>
+                    </div>
+                  </div>
+                </div>
+                <!--/.col-->
+                <div class="col-sm-6">
+                  <div class="callout callout-success">
+                    <small class="text-muted">一周评论数</small>
+                    <br>
+                    <strong class="h4" v-text="weekCount.commontCount" ></strong>
+                    <div class="chart-wrapper">
+                      <canvas id="sparkline-chart-4" width="100" height="30"></canvas>
+                    </div>
+                  </div>
+                </div>
+                <!--/.col-->
+              </div>
+            </div>
+            <!--/.col-->
+          </div>
+          <!-- <hr class="mt-0"> -->
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+  </div>
+  <!--/.row-->
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          登录日志
+        </div>
+        <div class="card-body">
+          <table class="table table-responsive-sm">
+            <thead>
+              <tr>
+                <th>来源</th>
+                <th>操作时间</th>
+                <th>操作内容</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-cloak v-for="log in loginLog">
+                <td v-text="log.ip"></td>
+                <td v-text="log.ts"></td>
+                <td v-text="log.action"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+  </div>
+</div>

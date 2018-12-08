@@ -1,0 +1,101 @@
+<div class="animated fadeIn" id="visitBeApp" >
+  <!-- Breadcrumb-->
+  <ol class="breadcrumb p-0 mb-4">
+    <h2 class="m-0 text-dark">受访统计</h2>
+    <!-- Breadcrumb Menu-->
+    <li class="breadcrumb-menu d-md-down-none">
+      <ul class="d-flex list-unstyled">
+        <li class="breadcrumb-item"><i class="fa fa-home"></i></li>
+        <li class="breadcrumb-item active">
+          <a>访问统计</a>
+        </li>
+        <li class="breadcrumb-item active">
+          <a>受访统计</a>
+        </li>
+      </ul>
+    </li>
+  </ol>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header no-border">
+          <div class="d-flex justify-content-between">
+            <h3 class="card-title">受访页面</h3>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="d-flex">
+            <table class="table table-responsive-sm">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>受访页面</th>
+                  <th>标题</th>
+                  <th>浏览量</th>
+                  <th>访客数</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="line in beVisitPages" >
+                  <td v-text="line.id" ></td>
+                  <td v-text="line.page"></td>
+                  <td v-text="line.title"></td>
+                  <td v-text="line.pv"></td>
+                  <td v-text="line.uv"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <Pagination :pageinfo="be.page" @change="bePageChange" ></Pagination>
+          </div>
+        </div>
+      </div>
+      <!-- /.card -->
+    </div>
+    <!-- /.col-lg-6 -->
+
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header no-border">
+          <div class="d-flex justify-content-between">
+            <h3 class="card-title">入口页面</h3>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="d-flex">
+            <table class="table table-responsive-sm">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>受访页面</th>
+                  <th>标题</th>
+                  <th>浏览量</th>
+                  <th>访客数</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="line in inPages" >
+                  <td v-text="line.id"></td>
+                  <td v-text="line.page"></td>
+                  <td v-text="line.title"></td>
+                  <td v-text="line.uv"></td>
+                  <td v-text="line.pv"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <Pagination :pageinfo="inpage.page" @change="inPageChange" ></Pagination>
+          </div>
+        </div>
+      </div>
+      <!-- /.card -->
+    </div>
+    <!-- /.col-lg-6 -->
+  </div>
+  <!--/.row-->
+</div>
+
+<script src="js/treehole/treehole-settings-visit-be.js"></script>

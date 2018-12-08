@@ -1,0 +1,162 @@
+<script src="js/treehole/treehole-kind-manage.js"></script>
+
+<div class="animated fadeIn" id="treehole-kind-manage">
+  <!-- Breadcrumb-->
+  <ol class="breadcrumb p-0 mb-4">
+    <h2 class="m-0 text-dark">分类信息管理</h2>
+    <!-- Breadcrumb Menu-->
+    <li class="breadcrumb-menu d-md-down-none">
+      <ul class="d-flex list-unstyled">
+        <li class="breadcrumb-item"><i class="fa fa-home"></i></li>
+        <li class="breadcrumb-item active">
+          <a>分类信息管理</a>
+        </li>
+      </ul>
+    </li>
+  </ol>
+  <!-- /.Breadcrumb -->
+  <!--/.row-->
+
+  <div class="row">
+    <div class="col-lg-12">
+      <!-- Simple Table -->
+      <div class="card">
+        <div class="card-header">
+          <button class="btn btn-sm btn-primary" @click="openAddWindow">
+            <i class="fa fa-dot-circle-o"></i> 新增
+          </button>
+        </div>
+        <div class="card-body">
+          <table class="table table-responsive-sm">
+            <thead>
+              <tr>
+                <th>编号</th>
+                <th>名称</th>
+                <th>状态</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="line in data">
+                <td v-text="line.id"></td>
+                <td v-text="line.name"></td>
+                <td v-cloak>
+                  <span v-if="line.statu == 0" class="badge badge-success">正常</span>
+                  <span v-if="line.statu == 9" class="badge badge-danger">删除</span>
+                </td>
+                <td v-cloak>
+                  <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
+                    <button type="button" class="btn btn-success btn-sm" @click="editLine(line)">编辑</button>
+                    <button type="button" class="btn btn-danger btn-sm" @click="deleteLine(line)" >删除</button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <Pagination :pageinfo="page" @change="pageChange" ></Pagination>
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+  </div>
+  <!--/.row-->
+  <!-- 弹出框 -->
+  <transition name="alert-window-action">
+    <div class="window-warper" v-cloak v-if="window.add.show">
+      <div class="card card-accent-primary alert-window">
+        <div class="card-header">
+          <span class="window-title">新增分类信息</span>
+          <div class="card-header-actions">
+            <a class="btn card-header-action" @click="closeWindow">
+              <li class="fa fa-close"></li>
+            </a>
+          </div>
+        </div>
+        <div class="card-body">
+          <input type="text" class="form-control" placeholder="输入分类名称">
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-sm btn-primary" @click="submitWindow">提交</button>
+          <button class="btn btn-sm btn-danger" @click="closeWindow">关闭</button>
+        </div>
+      </div>
+    </div>
+  </transition>
+
+  <!-- 弹出框 demo -->
+  <!-- <transition name="alert-window-action">
+    <div class="window-warper" v-cloak v-if="window.add.show">
+        <div class="card card-accent-primary alert-window">
+          <div class="card-header">
+            <span class="window-title">新增分类信息</span>
+            <div class="card-header-actions">
+              <a class="btn card-header-action" @click="closeWindow">
+                <li class="fa fa-close"></li>
+              </a>
+            </div>
+          </div>
+          <div class="card-body">
+            <input type="text" class="form-control" placeholder="输入分类名称">
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-sm btn-primary">提交</button>
+            <button class="btn btn-sm btn-danger">关闭</button>
+          </div>
+        </div>
+    </div>
+  </transition> -->
+  <Loading :show="loading"></Loading>
+
+  <!--alert demo-->
+  <!-- <transition name="alert-window-action">
+    <div class="window-warper" v-cloak v-if="alert">
+        <div class="card card-accent-danger alert-box">
+          <div class="card-header">
+            <span class="window-title">提示</span>
+          </div>
+          <div class="card-body">
+            这里是一个提示
+          </div>
+          <div class="card-footer alert-footer">
+              <button class="btn btn-sm btn-primary inline-block-button" @click="alert=false">知道了</button>
+          </div>
+        </div>
+    </div>
+  </transition> -->
+  <!-- alert demo end-->
+  <Alert :alert="alert" message="no message" @close="alert = false"></Alert>
+
+  <!--notice demo-->
+  <!-- <transition name="notice-window-action">
+    <div class="card bg-primary text-white notice-box" v-cloak v-if="notice" >
+        <div class="card-body">
+          这里是一个提示
+        </div>
+      </div>
+  </transition> -->
+  <!-- notice demo end-->
+
+  <Notice :notice="notice" :message="noticeMsg" @close="notice=false"></Notice>
+
+
+  <!-- confirm demo -->
+  <!-- <transition name="alert-window-action">
+    <div class="window-warper" v-cloak v-if="confirm">
+      <div class="card card-accent-danger confirm-box">
+        <div class="card-header">
+          <span class="window-title">提示</span>
+        </div>
+        <div class="card-body text-center">
+          确定删除吗?
+        </div>
+        <div class="card-footer text-center">
+          <button class="btn btn-sm btn-primary">确定</button>
+          <button class="btn btn-sm btn-danger" @click="confirm = false" >取消</button>
+        </div>
+      </div>
+    </div>
+  </transition> -->
+
+  <Confirm :confirm="tools.confirm" :message="tools.confirmMessage" @close="tools.confirm = false" @ok="confirmOk" ></Confirm>
+
+</div>

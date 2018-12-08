@@ -1,0 +1,149 @@
+<script src="js/mditor.js"></script>
+<script src="js/treehole/treehole-article-create.js"></script>
+
+<div class="animated fadeIn" id="treehole-article-create">
+  <!-- Breadcrumb-->
+  <ol class="breadcrumb p-0 mb-4">
+    <h2 class="m-0 text-dark">新建文章</h2>
+    <!-- Breadcrumb Menu-->
+    <li class="breadcrumb-menu d-md-down-none">
+      <ul class="d-flex list-unstyled">
+        <li class="breadcrumb-item">
+          <i class="fa fa-home"></i>
+        </li>
+        <li class="breadcrumb-item active">
+          <a>文章管理</a>
+        </li>
+        <li class="breadcrumb-item active">
+          <a>
+            新建发布</a>
+        </li>
+      </ul>
+    </li>
+  </ol>
+  <!-- /.Breadcrumb -->
+
+
+  <div class="card">
+    <div class="card-header">
+      新建一篇文章
+      <small class="text-danger">
+        在写作的过程中不要忘记保存 ( ctrl+s/command+s ) 哦 ，虽然程序会每隔2分钟自动保存一次 ！！！
+      </small>
+
+      <div class="card-header-actions">
+        <button type="reset" v-on:click="save" class="btn btn-sm btn-primary">
+          <i class="fa icon-check"></i> 存为草稿
+        </button>
+        <button type="reset" v-on:click="publish" class="btn btn-sm btn-success">
+          <i class="fa icon-cursor"></i> 发表
+        </button>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <div class="form-group row">
+        <div class="col-md-8">
+          <div class="form-group row">
+            <div class="col-md-12">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    文章标题
+                  </span>
+                </div>
+                <input type="text" id="input1-group1" name="input1-group1" class="form-control" v-model="article.title" placeholder="文章标题">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-md-12">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    自定义访问地址
+                  </span>
+                </div>
+                <input type="text" id="input1-group1" name="input1-group1" v-model="article.ppersonalise_url" class="form-control" placeholder="自定义访问地址">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-md-6">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    分类
+                  </span>
+                </div>
+                <!-- <input type="text" id="input1-group1" name="input1-group1" class="form-control" placeholder="分类"> -->
+                <select class="form-control" v-model="article.kind" >
+                  <option v-for="k in kinds" :value="k.value" v-text="k.name"></option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    标签
+                  </span>
+                </div>
+                <div class="form-control form-control-div">
+                  <input type="text" id="input-tags" placeholder="请输入标签">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card" id="upload-warpper" style="height: 100%;">
+            <div class="upload-text"><i class="fa fa-cloud-upload fa-lg"></i> <span>选择预览图</span></div>
+            <input type="file" class="btn upload-btn" id="fileload" @change="inputImage" />
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <textarea id="thole-editor" class="treehole-editor" v-cloak >
+文章简介
+
+------
+
+文章内容</textarea>
+      </div>
+    </div>
+  </div>
+  <Notice :notice="tools.notice" :message="tools.noticeMsg" @close="tools.notice = false" > </Notice>
+</div>
+
+<style>
+  .mditor-mini {
+    width: 100%;
+  }
+
+  #upload-warpper{
+    display: table;
+    width: 100%;
+  }
+  .upload-btn{
+    opacity: 0;
+    -ms-filter: 'alpha(opacity=0)';
+    width: 100%;
+    height: 100%;
+    position:absolute;
+    top: 0;
+    left: 0;
+    padding: 0;
+    margin: 0;
+  }
+  .upload-text {
+    display: table-cell;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    vertical-align:middle;
+  }
+
+</style>

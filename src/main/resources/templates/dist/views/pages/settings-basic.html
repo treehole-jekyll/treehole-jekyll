@@ -1,0 +1,104 @@
+<script src="js/treehole/treehole-settings-basic.js"></script>
+
+<div class="animated fadeIn" id="treehole-settings-basic">
+  <!-- Breadcrumb-->
+  <ol class="breadcrumb p-0 mb-4">
+    <h2 class="m-0 text-dark">系统管理</h2>
+    <!-- Breadcrumb Menu-->
+    <li class="breadcrumb-menu d-md-down-none">
+      <ul class="d-flex list-unstyled">
+        <li class="breadcrumb-item"><i class="fa fa-home"></i></li>
+        <li class="breadcrumb-item active">
+          <a>系统管理</a>
+        </li>
+      </ul>
+    </li>
+  </ol>
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-header no-border">
+          <div class="d-flex justify-content-between">
+            <h3 class="card-title">博客信息</h3>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="d-flex">
+            <div class="card-body">
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label">博客名称</label>
+                <div class="col-md-9">
+                  <input type="text" :disabled="control.bloginfo.title" v-model="bloginfo.title" class="form-control" placeholder="博客名称">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="text-input">博客地址</label>
+                <div class="col-md-9">
+                  <input type="text" :disabled="control.bloginfo.url" v-model="bloginfo.url" class="form-control" placeholder="博客地址">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label" for="email-input">博客简介</label>
+                <div class="col-md-9">
+                  <textarea rows="5" :disabled="control.bloginfo.describe" v-model="bloginfo.describe" class="form-control" placeholder="输入博客简介"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button type="submit" class="btn btn-sm btn-primary" @click="editBlogInfo" v-cloak >
+            <i class="fa fa-dot-circle-o"></i> <span v-text="control.bloginfo.editText"></span></button>
+        </div>
+      </div>
+      <!-- /.card -->
+    </div>
+    <!-- /.col-lg-6 -->
+
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-header no-border">
+          <div class="d-flex justify-content-between">
+            <h3 class="card-title">安装信息</h3>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="d-flex">
+            <div class="card-body">
+              <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label">安装时间</label>
+                  <div class="col-md-9">
+                    <input type="text" v-model="install.ts" class="form-control" :disabled="control.install.ts" placeholder="安装时间">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="text-input">安装目录</label>
+                  <div class="col-md-9">
+                    <input type="text" v-model="install.path" class="form-control" :disabled="control.install.path" placeholder="安装目录">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="email-input">Java 版本</label>
+                  <div class="col-md-9">
+                    <input type="text" v-model="install.javaVersion" class="form-control" placeholder="Java 版本" :disabled="control.install.javaVersion" >
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-3 col-form-label" for="email-input">系统类型</label>
+                  <div class="col-md-9">
+                    <input type="text" v-model="install.osType" class="form-control" placeholder="系统类型" :disabled="control.install.osType" >
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.card -->
+    </div>
+    <!-- /.col-lg-6 -->
+  </div>
+  <!--/.row-->
+  <Loading :show="tools.loading" ></Loading>
+</div>

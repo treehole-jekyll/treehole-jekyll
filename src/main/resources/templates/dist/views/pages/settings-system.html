@@ -1,0 +1,159 @@
+<script type="text/javascript" src="js/treehole/treehole-settings-system.js"></script>
+
+<div class="animated fadeIn" id="settings-system" >
+  <!-- Breadcrumb-->
+  <ol class="breadcrumb p-0 mb-4">
+    <h2 class="m-0 text-dark">系统设置</h2>
+    <!-- Breadcrumb Menu-->
+    <li class="breadcrumb-menu d-md-down-none">
+      <ul class="d-flex list-unstyled">
+        <li class="breadcrumb-item"><i class="fa fa-home"></i></li>
+        <li class="breadcrumb-item">
+          <a>系统管理</a>
+        </li>
+        <li class="breadcrumb-item active">
+          <a>系统设置</a>
+        </li>
+      </ul>
+    </li>
+  </ol>
+
+<div class="row">
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-header no-border">
+        <div class="d-flex justify-content-between">
+          <h3 class="card-title">账户信息</h3>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="d-flex">
+          <div class="card-body">
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label">登录名</label>
+                <div class="col-md-10">
+                  <input type="text" :disabled="accountInfoDisable.loginName" class="form-control form-control-sm" placeholder="请输入登录名" v-model="accountInfo.loginName" >
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="text-input">昵称</label>
+                <div class="col-md-10">
+                  <input type="text" :disabled="accountInfoDisable.nikiName" class="form-control form-control-sm" placeholder="请输入昵称" v-model="accountInfo.nikiName" >
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="email-input">登录密码</label>
+                <div class="col-md-10">
+                  <input type="password" :disabled="accountInfoDisable.loginPasswd" class="form-control form-control-sm" placeholder="请输入登录密码" v-model="accountInfo.loginPasswd" >
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-2 col-form-label" for="email-input">邮箱</label>
+                <div class="col-md-10">
+                  <input type="email" :disabled="accountInfoDisable.email" class="form-control form-control-sm" placeholder="请输入登录邮箱" v-model="accountInfo.email" >
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button type="submit" class="btn btn-sm btn-primary" @click="changeAccountInfo()" >
+          <i class="fa fa-dot-circle-o"></i> <span v-text="buttons.text.account"></span></button>
+      </div>
+    </div>
+    <!-- /.card -->
+  </div>
+  <!-- /.col-lg-6 -->
+
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-header no-border">
+        <div class="d-flex justify-content-between">
+          <h3 class="card-title">第三方账号设置</h3>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="d-flex">
+          <div class="card-body">
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label">Github</label>
+                <div class="col-md-8">
+                  <input type="text" class="form-control form-control-sm" :disabled="accountInfoDisable.github" placeholder="请输入GitHub用户名" v-model="accounts.github">
+                </div>
+                <div class="col-md-1">
+                  <button class="btn btn-primary btn-sm" v-text="buttons.text.github" @click="accountSetting('github')" ></button>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label">新浪微博</label>
+                <div class="col-md-8">
+                  <input type="text" class="form-control form-control-sm" :disabled="accountInfoDisable.weibo" placeholder="请输入新浪微博用户名" v-model="accounts.weibo" >
+                </div>
+                <div class="col-md-1">
+                  <button class="btn btn-primary btn-sm" v-text="buttons.text.weibo" @click="accountSetting('weibo')" ></button>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label">微信</label>
+                <div class="col-md-8">
+                  <input type="text" class="form-control form-control-sm" :disabled="accountInfoDisable.wechat" placeholder="请输入微信用户名" v-model="accounts.wechat">
+                </div>
+                <div class="col-md-1">
+                  <button class="btn btn-primary btn-sm" v-text="buttons.text.wechat" @click="accountSetting('wechat')" ></button>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label">豆瓣</label>
+                <div class="col-md-8">
+                  <input type="text" class="form-control form-control-sm" :disabled="accountInfoDisable.douban" placeholder="请输入豆瓣用户名" v-model="accounts.douban" >
+                </div>
+                <div class="col-md-1">
+                  <button class="btn btn-primary btn-sm" v-text="buttons.text.douban" @click="accountSetting('douban')" ></button>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label">掘金</label>
+                <div class="col-md-8">
+                  <input type="text" class="form-control form-control-sm" :disabled="accountInfoDisable.juejin" placeholder="请输入掘金用户名" v-model="accounts.juejin">
+                </div>
+                <div class="col-md-1">
+                  <button class="btn btn-primary btn-sm" v-text="buttons.text.juejin" @click="accountSetting('juejin')" ></button>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label">开源中国</label>
+                <div class="col-md-8">
+                  <input type="text" class="form-control form-control-sm" :disabled="accountInfoDisable.oschina" placeholder="请输入开源中国账号" v-model="accounts.oschina" >
+                </div>
+                <div class="col-md-1">
+                  <button class="btn btn-primary btn-sm" v-text="buttons.text.oschina" @click="accountSetting('oschina')" ></button>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label">Facebook</label>
+                <div class="col-md-8">
+                  <input type="text" class="form-control form-control-sm" :disabled="accountInfoDisable.facebook" placeholder="请输入 FaceBook 用户名" v-model="accounts.facebook" >
+                </div>
+                <div class="col-md-1">
+                  <button class="btn btn-primary btn-sm" v-text="buttons.text.facebook" @click="accountSetting('facebook')" ></button>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 col-form-label">Twitter</label>
+                <div class="col-md-8">
+                  <input type="text" class="form-control form-control-sm" :disabled="accountInfoDisable.twitter" placeholder="请输入 Twitter 用户名" v-model="accounts.twitter" >
+                </div>
+                <div class="col-md-1">
+                  <button class="btn btn-primary btn-sm" v-text="buttons.text.twitter" @click="accountSetting('twitter')" ></button>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.card -->
+  </div>
+  <!-- /.col-lg-6 -->
+</div>
+<!--/.row-->
+</div>
